@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<!-- HTML/CSS -->
+<!-- 
+    write html css to make the image always align center and
+    when under 1000px screen make image show in 1 column, under 1500px
+    make the image show 2 columns and if the screen is wider than 1500px show 3 columns 
+-->
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body > div {
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            place-items: center;
+        }
+        body > div > div {
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        @media screen and (min-width: 1500px) {
+            body > div {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        @media screen and (max-width: 1499px) {
+            body > div {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media screen and (max-width: 1000px) {
+            body > div {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div>
+        <div>
+            <img src="./img/1.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/2.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/3.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/5.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/6.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

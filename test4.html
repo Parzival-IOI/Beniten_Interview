@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!-- 
+    Write Javascript to calulate the working day in a year for employee
+    by just input the year in the input box below
+
+    Holiday included:
+
+    1. Half Friday
+    2. Saturday and Sunday
+
+-->
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Javascript Test</title>
+    </head>
+    <body>
+        <form>
+            Year : <input type="text" id="year" name="year" />
+            <div class="result"></div>
+            <button type="button" onclick="formSubmit()">
+                Get Number of Work Days
+            </button>
+        </form>
+        <div id="display"></div>
+
+        <script>
+            function daysInYear(year) {
+                return (year % 4 === 0 && year % 100 > 0) || year % 400 == 0 ? 366 : 365;
+            }
+
+            function formSubmit() {
+                let year = document.getElementById("year");
+                let display = document.getElementById("display");
+
+                let fri = 0;
+                let sat_sun = 0;
+
+                for (let i = 0; i < 12; i++) {
+                    let date = new Date(year.value, i + 1, 0).getDate();
+                    for (let j = 0; j < date; j++) {
+                        day = new Date(year.value, i, j + 1);
+                        if (day.getDay() == 5) {
+                            fri++;
+                            console.log(day);
+                        }
+                        if (day.getDay() == 6 || day.getDay() == 0) {
+                            sat_sun++;
+                            console.log(day);
+                        }
+                    }
+                }
+
+                let workDate = daysInYear(year.value) - (sat_sun + fri);
+
+                display.innerHTML = workDate;
+            }
+        </script>
+    </body>
+</html>
